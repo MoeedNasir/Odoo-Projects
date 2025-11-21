@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Root Menu -->
+        <menuitem id="menu_custom_ecom_root"
+                  name="Custom E-commerce"
+                  sequence="10"/>
+
+        <!-- (Optional) Action for Merchant Configurations -->
+        <record id="action_custom_ecom_merchant" model="ir.actions.act_window">
+            <field name="name">Merchant Configurations</field>
+            <field name="res_model">custom_ecom.merchant</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Child Menu -->
+        <menuitem id="menu_merchant_config"
+                  name="Merchant Configurations"
+                  parent="menu_custom_ecom_root"
+                  action="action_custom_ecom_merchant"/>
+
+    </data>
+</odoo>

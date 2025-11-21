@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Inherit payment.express_checkout instead of website_sale.checkout -->
+    <template id="custom_stripe_button_template" inherit_id="payment.express_checkout">
+        <!-- Inject inside the form that wraps providers -->
+        <xpath expr="//form[@name='o_payment_express_checkout_form']" position="inside">
+            <div class="mt16 text-center">
+                <button id="custom_stripe_btn" type="button" class="btn btn-primary w-100">
+                    <i class="fa fa-credit-card me-1"/> Pay Securely with Stripe
+                </button>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Optional success/cancel templates -->
+    <template id="payment_success_template">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32 text-center">
+                <h3 class="text-success">Payment Successful </h3>
+                <p>Your transaction has been completed successfully.</p>
+                <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+            </div>
+        </t>
+    </template>
+
+    <template id="payment_cancel_template">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32 text-center">
+                <h3 class="text-danger">Payment Cancelled </h3>
+                <p>Your payment was cancelled. Please try again.</p>
+                <a href="/shop/cart" class="btn btn-secondary mt-3">Back to Cart</a>
+            </div>
+        </t>
+    </template>
+
+</odoo>
